@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link href="../static/css/get.css" th:href="@{/css/get.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="form">
+    <video autoplay loop class="form-background-video" muted playsinline>
+        <source src="videos/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="form-title">
+        Get book
+    </div>
+    <form th:action="@{/get}" th:object="${getBook}" th:method="patch">
+        <div class="form-content">
+            <div class="form-field">
+                <label>Name of book</label>
+                <input type="text" th:field="*{nameOfBook}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('nameOfBook')}" th:errors="*{nameOfBook}"></div>
+            </div>
+            <div class="form-field">
+                <label>Your name</label>
+                <input type="text" th:field="*{firstName}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            </div>
+            <div class="form-field">
+                <label>Your surname</label>
+                <input type="text" th:field="*{lastName}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            </div>
+            <div class="form-field">
+                <label>Email</label>
+                <input type="text" th:field="*{email}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Submit" class="form-input-button">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

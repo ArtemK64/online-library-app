@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lost book</title>
+    <link href="../static/css/lost.css" th:href="@{/css/lost.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="form">
+    <video autoplay loop class="form-background-video" muted playsinline>
+        <source src="videos/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="form-title">
+        Lost book
+    </div>
+    <form th:action="@{/lost}" th:object="${book}" th:method="patch">
+        <div class="form-content">
+            <div class="form-field">
+                <label>Name of book</label>
+                <input type="text" th:field="*{title}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Submit" class="form-input-button">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

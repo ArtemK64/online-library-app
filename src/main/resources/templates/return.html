@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Return book</title>
+    <link href="../static/css/return.css" th:href="@{/css/return.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="form">
+    <video autoplay loop class="form-background-video" muted playsinline>
+        <source src="videos/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="form-title">
+        Return book
+    </div>
+    <form th:action="@{/return}" th:object="${returnBook}" th:method="patch">
+        <div class="form-content">
+            <div class="form-field">
+                <label>Name of book you have taken</label>
+                <input type="text" th:field="*{nameOfBook}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('nameOfBook')}" th:errors="*{nameOfBook}"></div>
+            </div>
+            <div class="form-field">
+                <label>Email what you leave before</label>
+                <input type="text" th:field="*{email}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Submit" class="form-input-button">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
